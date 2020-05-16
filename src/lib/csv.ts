@@ -70,9 +70,12 @@ export default function csv(
         Array.isArray(v)
           ? v
           : columnOrder.map((k) =>
-              typeof v[k] !== 'undefined'
-                ? v[k]
-                : '',
+              let value= typeof v[k] !== 'undefined'
+                        ? v[k]
+                        : '';
+              if(value===null) return ""
+              if(isNaN(parseFloat(value))) return value
+              return parseFloat(value).toString().replace('.',',')
             )
       )
       .forEach((v) => {
