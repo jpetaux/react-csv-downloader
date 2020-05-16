@@ -59,7 +59,7 @@ export default function csv(
   if (!noHeader) {
     const headerNames = Object.values(header)
     if (headerNames.length > 0) {
-      content.push(headerNames.map(wrap).join(separator))
+      content.push(headerNames.map(wrap).reverse().join(separator))
     }
   }
 
@@ -79,7 +79,7 @@ export default function csv(
             )
       )
       .forEach((v) => {
-        content.push(v.map(wrap).join(separator))
+        content.push(v.map(wrap).reverse().join(separator))
       })
   }
 
