@@ -69,14 +69,14 @@ export default function csv(
       .map((v) =>
         Array.isArray(v)
           ? v
-          : columnOrder.map((k) =>
-              let value= typeof v[k] !== 'undefined'
+          : columnOrder.map((k) =>{
+              var value= typeof v[k] !== 'undefined'
                         ? v[k]
                         : '';
               if(value===null) return ""
               if(isNaN(parseFloat(value))) return value
               return parseFloat(value).toString().replace('.',',')
-            )
+            })
       )
       .forEach((v) => {
         content.push(v.map(wrap).reverse().join(separator))
